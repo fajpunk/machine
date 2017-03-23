@@ -5,6 +5,7 @@ dnf__packages:
   - tmux
   - https://www.dropbox.com/download?dl=packages/fedora/nautilus-dropbox-2015.10.28-1.fedora.x86_64.rpm
   - google-chrome-stable
+  - hub
 
 # dnf__yumrepos:
 #  - name: 

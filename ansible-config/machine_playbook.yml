@@ -2,8 +2,19 @@
   hosts: localhost
   become: yes
   become_user: root
+
   roles:
     - dnf
+
+  tasks:
+    - name: Download golang binaries
+      get_url:
+        url: "https://storage.googleapis.com/golang/go1.8.linux-amd64.tar.gz"
+        dest: "/tmp/golang.tar.gz"
+    - name: Extract golang binaries to /usr/local
+      unarchive:
+        src: "/tmp/golang.tar.gz"
+        dest: "/usr/local"
 
 - name: Provision machine (doesn't need sudo)
   hosts: localhost
@@ -14,6 +25,18 @@
     - name: Configure dropbox to start on login
       shell: "dropbox autostart y"
 
+    - name: Install prompt
+      git:
+        repo: "https://github.com/magicmonty/bash-git-prompt.git"
+        dest: "~/src/bash-git-prompt"
+
+    # go
+    - name: Create go directory
+      file:
+        path: "~/go"
+        state: directory
+
+    # envs
     - name: Install pyenv
       shell: "git clone https://github.com/pyenv/pyenv.git ~/.pyenv"
       args:
