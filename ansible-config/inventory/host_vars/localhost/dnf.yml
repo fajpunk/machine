@@ -7,6 +7,7 @@ dnf__packages:
   - google-chrome-stable
   - hub
   - docker-ce
+  - https://downloads.slack-edge.com/linux_releases/slack-2.5.2-0.1.fc21.x86_64.rpm
 
 # dnf__yumrepos:
 #  - name: 
