@@ -33,6 +33,10 @@
         groups: docker
         append: yes
 
+    - name: AWS CLI
+      pip:
+        name: awscli
+
 - name: Provision machine (doesn't need sudo)
   hosts: localhost
   tasks:
