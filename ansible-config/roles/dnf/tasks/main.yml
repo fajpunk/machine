@@ -1,0 +1,14 @@
+- name: Install google yum repo
+  yum_repository:
+    name: "google-chrome"
+    description: "Repo for google chrome"
+    baseurl: 'http://dl.google.com/linux/chrome/rpm/stable/\$basearch'
+    gpgkey: "https://dl-ssl.google.com/linux/linux_signing_key.pub"
+    gpgcheck: 1
+    state: present
+
+- name: Install packages
+  dnf:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ dnf__packages }}"

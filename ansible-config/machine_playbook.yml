@@ -1,0 +1,35 @@
+- name: Provision machine (needs sudo)
+  hosts: localhost
+  become: yes
+  become_user: root
+  roles:
+    - dnf
+
+- name: Provision machine (doesn't need sudo)
+  hosts: localhost
+  tasks:
+    - name: Start dropbox
+      shell: "dropbox start -i"
+
+    - name: Configure dropbox to start on login
+      shell: "dropbox autostart y"
+
+    - name: Install pyenv
+      shell: "git clone https://github.com/pyenv/pyenv.git ~/.pyenv"
+      args:
+        creates: "~/.pyenv"
+
+    - name: Install rbenv
+      shell: "git clone https://github.com/rbenv/rbenv.git ~/.rbenv"
+      args:
+        creates: "~/.rbenv"
+
+    - name: Install nodenv
+      shell: "git clone https://github.com/nodenv/nodenv.git ~/.nodenv"
+      args:
+        creates: "~/.nodenv"
+
+    - name: Install Haskell stack
+      shell: "curl -sSL https://get.haskellstack.org/ | sh"
+      args:
+        creates: "/usr/local/bin/stack"
