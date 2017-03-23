@@ -16,6 +16,23 @@
         src: "/tmp/golang.tar.gz"
         dest: "/usr/local"
 
+    # Docker
+    - name: Start docker on boot
+      systemd:
+        name: docker
+        enabled: yes
+
+    - name: Make docker group
+      group:
+        name: docker
+        state: present
+
+    - name: Add me to it
+      user:
+        name: dfuchs
+        groups: docker
+        append: yes
+
 - name: Provision machine (doesn't need sudo)
   hosts: localhost
   tasks:
