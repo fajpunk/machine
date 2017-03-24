@@ -9,6 +9,10 @@ dnf__packages:
   - docker-ce
   - https://downloads.slack-edge.com/linux_releases/slack-2.5.2-0.1.fc21.x86_64.rpm
   - the_silver_searcher
+  - libselinux-python
+  - sqlite-devel
+  - bzip2-devel
+  - readline-devel
 
 # dnf__yumrepos:
 #  - name: 
