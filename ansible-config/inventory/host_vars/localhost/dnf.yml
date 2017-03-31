@@ -15,6 +15,7 @@ dnf__packages:
   - readline-devel
   - libffi-devel
   - python-pyasn1
+  - xsel
 
 # dnf__yumrepos:
 #  - name: 
